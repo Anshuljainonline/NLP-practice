@@ -17,11 +17,12 @@ for i in range(len(sentences)):
     review = review.lower()
     review = review.split()
     
-    review = [wordnet.lemmatize(word) for word in review if not word in set(stopwords.words('english'))]
+    review = [wordnet.lemmatize(word) for word in review if not word in stopwords.words('english')]
     review = ' '.join(review)
     strin.append(review)
 
 from sklearn.feature_extraction.text import TfidfVectorizer
 tfidf=TfidfVectorizer()
 
+#an array with values given between 0 and 1
 X=tfidf.fit_transform(strin).toarray()
